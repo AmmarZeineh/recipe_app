@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/utils/app_colors.dart';
 import 'package:recipe_app/core/utils/app_fonts.dart';
 import 'package:recipe_app/core/utils/app_images.dart';
+import 'package:recipe_app/core/utils/app_router.dart';
 import 'package:recipe_app/core/utils/widgets/custom_button.dart';
 import 'package:recipe_app/features/splash/presentation/views/widgets/splash_view_header.dart';
 
@@ -14,7 +16,6 @@ class SplashViewBody extends StatelessWidget {
         body: SafeArea(
       child: Stack(
         children: [
-          Container(),
           Image.asset(
             fit: BoxFit.fill,
             Assets.coreAssetsImagesAppStarting,
@@ -53,7 +54,12 @@ class SplashViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const CustomButton(),
+                CustomButton(
+                  onPressed: () {
+                    context.pushReplacement(AppRouter.kHomeView);
+                  },
+                  title: 'Start cooking',
+                ),
                 const SizedBox(
                   height: 65,
                 ),
