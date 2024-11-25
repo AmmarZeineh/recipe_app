@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/core/utils/app_fonts.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/custom_text_field.dart';
+import 'package:recipe_app/features/home/presentation/views/widgets/popular_category_section.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -11,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 12,
@@ -22,7 +23,9 @@ class HomeViewBody extends StatelessWidget {
                   .copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 8),
-            const CustomTextField()
+            const CustomTextField(),
+            const SizedBox(height: 16),
+            const PopularCategorySection()
           ],
         ),
       ),
