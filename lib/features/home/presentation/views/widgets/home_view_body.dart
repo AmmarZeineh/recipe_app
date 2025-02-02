@@ -45,7 +45,7 @@ class HomeViewBody extends StatelessWidget {
                     child: Text(state.err),
                   );
                 } else {
-                  return const RefreshProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             )

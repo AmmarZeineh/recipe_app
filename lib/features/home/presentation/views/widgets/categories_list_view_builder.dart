@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_app/constants.dart';
+import 'package:recipe_app/features/home/presentation/view_models/fetch_meals_by_category_cubit/fetch_meals_by_category_cubit.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/category_container.dart';
 
 class CategoriesListViewBuilder extends StatefulWidget {
@@ -23,16 +26,19 @@ class _CategoriesListViewBuilderState extends State<CategoriesListViewBuilder> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
+                  BlocProvider.of<FetchMealsByCategoryCubit>(context)
+                      .fetchMealsByCategory(categoriesList[index]);
                   currentIndex = index;
                 });
               },
               child: CategoryContainer(
                 isActive: index == currentIndex,
+                title: categoriesList[index],
               ),
             ),
           );
         },
-        itemCount: 5,
+        itemCount: categoriesList.length,
       ),
     );
   }

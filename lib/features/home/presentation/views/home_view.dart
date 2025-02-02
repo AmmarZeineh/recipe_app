@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
       body: BlocProvider(
           create: (BuildContext context) =>
               FetchMealsByCategoryCubit(HomeRepoImpl(Api()))
-                ..fetchMealsByCategory("Seafood"),
+                ..fetchMealsByCategory("Beef"),
           child: const HomeViewBody()),
     );
   }

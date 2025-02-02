@@ -33,7 +33,6 @@ class MealContainer extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                
               ],
             ),
           )

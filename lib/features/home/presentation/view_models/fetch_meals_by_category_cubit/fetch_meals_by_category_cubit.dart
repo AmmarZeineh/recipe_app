@@ -11,6 +11,7 @@ class FetchMealsByCategoryCubit extends Cubit<FetchMealsByCategoryState> {
   final HomeRepo homeRepo;
   List<MealModel> mealsList = [];
   Future<void> fetchMealsByCategory(String category) async {
+    mealsList = [];
     emit(FetchMealsByCategoryLoading());
     var result = await homeRepo.fetchMealsByCategory(category);
     result.fold(

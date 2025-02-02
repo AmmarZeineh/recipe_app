@@ -5,8 +5,9 @@ import 'package:recipe_app/core/utils/app_fonts.dart';
 class InActiveCategoryContainer extends StatelessWidget {
   const InActiveCategoryContainer({
     super.key,
+    required this.title,
   });
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +18,7 @@ class InActiveCategoryContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           child: Text(
-            'Salad',
+            title,
             style: AppFonts.styleBold12(context).copyWith(
                 color: AppColors.primary.primary30,
                 fontWeight: FontWeight.w600),
@@ -31,8 +32,9 @@ class InActiveCategoryContainer extends StatelessWidget {
 class ActiveCategoryContainer extends StatelessWidget {
   const ActiveCategoryContainer({
     super.key,
+    required this.title,
   });
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -43,7 +45,7 @@ class ActiveCategoryContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           child: Text(
-            'Salad',
+            title,
             style: AppFonts.styleBold12(context)
                 .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
           ),
