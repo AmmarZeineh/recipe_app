@@ -8,18 +8,16 @@ class PopularCategorySection extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
-          'Popular category',
-          style: AppFonts.styleBold20(context)
-              .copyWith(fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        const CategoriesListViewBuilder()
-      ]),
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        'Popular category',
+        style:
+            AppFonts.styleBold20(context).copyWith(fontWeight: FontWeight.w600),
+      ),
+      const SizedBox(
+        height: 8,
+      ),
+      const CategoriesListViewBuilder()
+    ]);
   }
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/core/utils/app_fonts.dart';
+import 'package:recipe_app/features/home/data/models/meal_model.dart';
+import 'package:recipe_app/features/home/presentation/view_models/fetch_meals_by_category_cubit/fetch_meals_by_category_cubit.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/custom_text_field.dart';
+import 'package:recipe_app/features/home/presentation/views/widgets/meals_list_view_builder.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/popular_category_section.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -15,17 +19,36 @@ class HomeViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 12,
+              height: 16,
             ),
             Text(
               'Find best recipes for cooking',
-              style: AppFonts.styleBold32(context)
+              style: AppFonts.styleBold24(context)
                   .copyWith(fontWeight: FontWeight.w600),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             const CustomTextField(),
             const SizedBox(height: 16),
-            const PopularCategorySection()
+            const PopularCategorySection(),
+            const SizedBox(
+              height: 16,
+            ),
+            BlocBuilder<FetchMealsByCategoryCubit, FetchMealsByCategoryState>(
+              builder: (context, state) {
+                if (state is FetchMealsByCategorySuccess) {
+                  List<MealModel> mealsList =
+                      BlocProvider.of<FetchMealsByCategoryCubit>(context)
+                          .mealsList;
+                  return MealsListViewBuilder(mealsList: mealsList);
+                } else if (state is FetchMealsByCategoryFailure) {
+                  return Center(
+                    child: Text(state.err),
+                  );
+                } else {
+                  return const RefreshProgressIndicator();
+                }
+              },
+            )
           ],
         ),
       ),

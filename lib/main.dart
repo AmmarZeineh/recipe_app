@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/core/utils/app_router.dart';
+import 'package:recipe_app/core/utils/size_config.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -10,6 +11,7 @@ class RecipeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return MaterialApp.router(
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,

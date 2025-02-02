@@ -25,7 +25,6 @@ class _CategoriesListViewBuilderState extends State<CategoriesListViewBuilder> {
                 setState(() {
                   currentIndex = index;
                 });
-                print(currentIndex);
               },
               child: CategoryContainer(
                 isActive: index == currentIndex,

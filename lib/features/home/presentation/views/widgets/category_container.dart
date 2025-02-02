@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/home/presentation/views/widgets/inActive_active_category_container.dart';
+import 'package:recipe_app/features/home/presentation/views/widgets/inactive_active_category_container.dart';
 
 class CategoryContainer extends StatelessWidget {
   const CategoryContainer({super.key, required this.isActive});
