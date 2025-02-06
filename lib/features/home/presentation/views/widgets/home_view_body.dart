@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/core/utils/app_fonts.dart';
+import 'package:recipe_app/core/utils/size_config.dart';
 import 'package:recipe_app/features/home/data/models/meal_model.dart';
 import 'package:recipe_app/features/home/presentation/view_models/fetch_meals_by_category_cubit/fetch_meals_by_category_cubit.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/custom_text_field.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/meals_list_view_builder.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/popular_category_section.dart';
+import 'package:recipe_app/features/home/presentation/views/widgets/shimmer_meal.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -45,7 +48,20 @@ class HomeViewBody extends StatelessWidget {
                     child: Text(state.err),
                   );
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: SizedBox(
+                        height: SizeConfig.height / 1.62,
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: ShimmerMeal(),
+                            );
+                          },
+                        ),
+                      ));
                 }
               },
             )
