@@ -4,6 +4,7 @@ import 'package:recipe_app/core/utils/api.dart';
 import 'package:recipe_app/core/utils/app_router.dart';
 import 'package:recipe_app/core/utils/size_config.dart';
 import 'package:recipe_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:recipe_app/features/home/presentation/view_models/fetch_meal_details_by_id_cubit/fetch_meal_details_by_id_cubit.dart';
 import 'package:recipe_app/features/home/presentation/view_models/fetch_random_meal_cubit/fetch_random_meal_cubit.dart';
 
 void main() {
@@ -19,8 +20,19 @@ class RecipeApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (BuildContext context) =>
-                FetchRandomMealCubit(HomeRepoImpl(Api())))
+          create: (BuildContext context) => FetchRandomMealCubit(
+            HomeRepoImpl(
+              Api(),
+            ),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => FetchMealDetailsByIdCubit(
+            HomeRepoImpl(
+              Api(),
+            ),
+          ),
+        )
       ],
       child: MaterialApp.router(
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),

@@ -6,8 +6,8 @@ import 'package:recipe_app/features/home/data/models/meal_model.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/meal_details_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-class RandomMealSuccessWidget extends StatelessWidget {
-  const RandomMealSuccessWidget({
+class MealDetailsSuccessWidget extends StatelessWidget {
+  const MealDetailsSuccessWidget({
     super.key,
     required this.mealModel,
   });
@@ -34,8 +34,8 @@ class RandomMealSuccessWidget extends StatelessWidget {
                     fadeOutDuration: Duration.zero,
                     placeholder: (context, url) {
                       return Shimmer.fromColors(
-                        baseColor: Colors.grey,
-                        highlightColor: Colors.white,
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
                         child: Container(
                           width: SizeConfig.width - 32,
                           height: SizeConfig.height / 2.4,

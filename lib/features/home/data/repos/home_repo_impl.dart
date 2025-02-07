@@ -46,4 +46,21 @@ class HomeRepoImpl implements HomeRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, MealModel>> fetchMealDetailById(int id) async {
+    try {
+      var response = await apiService.get(
+          url: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=$id',
+          token: null);
+      MealModel mealModel = MealModel.fromJson(response['meals'][0]);
+      return Right(mealModel);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioExeption(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

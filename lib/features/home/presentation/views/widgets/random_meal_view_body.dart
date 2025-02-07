@@ -13,7 +13,7 @@ class RandomMealViewBody extends StatelessWidget {
       builder: (context, state) {
         if (state is FetchRandomMealSuccess) {
           MealModel mealModel = state.mealModel;
-          return RandomMealSuccessWidget(mealModel: mealModel);
+          return MealDetailsSuccessWidget(mealModel: mealModel);
         } else if (state is FetchRandomMealFailure) {
           return Center(
             child: Text(state.err),

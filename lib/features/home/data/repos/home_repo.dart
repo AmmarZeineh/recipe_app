@@ -6,4 +6,5 @@ abstract class HomeRepo {
   Future<Either<Failure, List<MealModel>>> fetchMealsByCategory(
       String category);
   Future<Either<Failure, MealModel>> fetchRandomMeal();
+  Future<Either<Failure, MealModel>> fetchMealDetailById(int id);
 }
