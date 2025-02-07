@@ -11,11 +11,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-          create: (BuildContext context) =>
-              FetchMealsByCategoryCubit(HomeRepoImpl(Api()))
-                ..fetchMealsByCategory("Beef"),
-          child: const HomeViewBody()),
-    );
+        body: MultiBlocProvider(providers: [
+      BlocProvider(
+        create: (BuildContext context) =>
+            FetchMealsByCategoryCubit(HomeRepoImpl(Api()))
+              ..fetchMealsByCategory("Beef"),
+      ),
+    ], child: const HomeViewBody()));
   }
 }

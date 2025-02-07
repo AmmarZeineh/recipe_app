@@ -7,6 +7,7 @@ import 'package:recipe_app/features/home/presentation/view_models/fetch_meals_by
 import 'package:recipe_app/features/home/presentation/views/widgets/custom_text_field.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/meals_list_view_builder.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/popular_category_section.dart';
+import 'package:recipe_app/features/home/presentation/views/widgets/random_meal_button.dart';
 import 'package:recipe_app/features/home/presentation/views/widgets/shimmer_meal.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -31,6 +32,12 @@ class HomeViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const CustomTextField(),
+            const SizedBox(
+              height: 8,
+            ),
+            const Center(
+              child: RandomMealButton(),
+            ),
             const SizedBox(height: 16),
             const PopularCategorySection(),
             const SizedBox(
@@ -49,19 +56,20 @@ class HomeViewBody extends StatelessWidget {
                   );
                 } else {
                   return Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: SizedBox(
-                        height: SizeConfig.height / 1.62,
-                        child: ListView.builder(
-                          itemBuilder: (context, index) {
-                            return const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
-                              child: ShimmerMeal(),
-                            );
-                          },
-                        ),
-                      ));
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: SizedBox(
+                      height: SizeConfig.height / 1.8,
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.only(bottom: 12),
+                            child: ShimmerMeal(),
+                          );
+                        },
+                      ),
+                    ),
+                  );
                 }
               },
             )
